@@ -9,4 +9,8 @@
 #include "../libs/libft/includes/libft.h"
 #include "../libs/libft/includes/get_next_line_bonus.h"
 
+
+#define WIDTH 512
+#define HEIGHT 512
+
 #endif
