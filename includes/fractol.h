@@ -13,4 +13,8 @@
 #define WIDTH 512
 #define HEIGHT 512
 
+static int validate(char *fractol);
+static void run_graphic(char *fractol);
+int main(int argc, char **argv);
+
 #endif

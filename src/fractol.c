@@ -1,36 +1,45 @@
-#include "../includes/fractol.h"
-
-typedef struct s_complex
-{
-    double real; // x
-    double i; //y
-
-} t_complex;
+// #include "../includes/fractol.h"
 
 
-int main(void)
-{
-    t_complex z;
-    t_complex c;
-    double tmp_real;
+// // z = z^2 - C* i;
 
-    z.real = 0;
-    z.i = 0;
+// // se o numero complexo estiver numa crescente infinita logo ele estará fora do desenho de mandelbrot
+// // agora se ele alternar o valor dele ficando entre 0 e -1, ele estará dentro do desenho
 
-    c.real = 0.2;
-    c.i = 0.4;
-    int i = 0;
-    while(i < 42){
-        tmp_real = (z.real * z.real) - (z.i * z.i);
-        z.i = 2 * z.real * z.i;
+// // então quando ele está numa crescente infinita diferente de -1 ele estará fora do desenho, 
+// //caso contrário entrará no desenho ficando no loop entre 0 e -1
 
-        z.real = tmp_real;
+// typedef struct s_complex
+// {
+//     double real; // x
+//     double i; //y
 
-        z.real += c.real;
-        z.i += c.i;
+// } t_complex;
 
-        printf("iteração n -> :%d, real: %f imaginary: %f\n", i, z.real, z.i); 
-        i++;
-    }
-}
-// Zn = Zn-1^2 + c
+
+// int main(void)
+// {
+//     t_complex z;
+//     t_complex c;
+//     double tmp_real;
+
+//     z.real = 0;
+//     z.i = 0;
+
+//     c.real = 0.2;
+//     c.i = 0.4;
+//     int i = 0;
+//     while(i < 42){
+//         tmp_real = (z.real * z.real) - (z.i * z.i);
+//         z.i = 2 * z.real * z.i;
+
+//         z.real = tmp_real;
+
+//         z.real += c.real;
+//         z.i += c.i;
+
+//         printf("iteração n -> :%d, real: %f imaginary: %f\n", i, z.real, z.i); 
+//         i++;
+//     }
+// }
+// // Zn = Zn-1^2 + c
