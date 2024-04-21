@@ -17,10 +17,10 @@ int main(void)
     z.real = 0;
     z.i = 0;
 
-    c.real = 5;
-    c.i = 2;
+    c.real = 0.2;
+    c.i = 0.4;
     int i = 0;
-    while( i < 42){
+    while(i < 42){
         tmp_real = (z.real * z.real) - (z.i * z.i);
         z.i = 2 * z.real * z.i;
 
@@ -30,6 +30,7 @@ int main(void)
         z.i += c.i;
 
         printf("iteração n -> :%d, real: %f imaginary: %f\n", i, z.real, z.i); 
-        i++; 
+        i++;
     }
 }
+// Zn = Zn-1^2 + c
