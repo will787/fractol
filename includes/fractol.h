@@ -11,12 +11,11 @@
 
 typedef struct
 {
-    int x;
-    int y;
     mlx_t *mlx;
     mlx_image_t *image;
+    double x; // numero real
+    double y; // imaginario 
 } t_f;
-
 
 #define WIDTH 512
 #define HEIGHT 512
