@@ -4,25 +4,21 @@ void put_pixel(int x, int y, t_f *fractol)
 {
     t_f z;
     t_f c;
+    int i;
 
     z.x = 0.0;
     z.y = 0.0;
     c.x = points_scale(x, -2, +2, 0, WIDTH);
     c.y = points_scale(y, +2, -2, 0, HEIGHT);
-    int i = 0;
-    while (i < WIDTH + HEIGHT)
+    i = -1;
+    while (++i < fractol->iters)
     {
-        double tmp = (z.x * z.x) - (z.y * z.y);
+        z = sum_imaginary(square_complex(z), c);
 
-        z.y = 2 * z.x * z.y;
-
-        z.x = tmp;
-
-        z.x += c.x; // numero complex real
-        z.y += c.y; // imaginary number complex
-
-        if () // se estiver dentro do conjunto você plota de uma cor
-        else // se não tiver você plota de branco, a regra de mandelbrot para pintar os pontos
+        if((z.x * z.x ) + (z.y * z.y) > 4.0)
+        {
+            mlx_put_pixel(fractol->image, x, y, fractol->colors);
+        } 
     }
     
 }
@@ -41,11 +37,27 @@ void render(t_f *fractol)
             mlx_put_pixel(fractol->image, x, y, fractol);
         }
     }
-    
 }
-
 
 double points_scale(double unscaled_num, double new_min, double new_max, double old_min, double old_max)
 {
     return(new_max - new_min) * (unscaled_num - old_min) / (old_max - old_min) + new_min;
+}
+
+t_f sum_imaginary(t_f z1, t_f z2)
+{
+    t_f plus_i;
+
+    plus_i.x = z1.x + z2.x;
+    plus_i.y = z1.y + z2.y;
+    return plus_i;
+}
+
+t_f square_complex(t_f z)
+{
+    t_f tmp;
+
+    tmp.x = (z.x * z.x) -(z.y * z.y);
+    tmp.y = 2 * z.x * z.y;
+    return tmp;
 }
