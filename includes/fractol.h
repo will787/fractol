@@ -11,11 +11,8 @@
 
 typedef struct
 {
-    int x;
-    int y;
     mlx_t *mlx;
     mlx_image_t *image;
-
     double iters;
     double colors;
     unsigned int (*map)(double, double, void*);
@@ -26,7 +23,6 @@ typedef enum
     black_white,
     circle_cromatic
 } OPTIONS_COLORS;
-
 
 #define WIDTH 512
 #define HEIGHT 512
