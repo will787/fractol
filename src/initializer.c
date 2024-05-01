@@ -1,23 +1,13 @@
 #include "../includes/fractol.h"
 
-int validate(char *fractol, t_f *frac)
+void validate(char *fractol, t_f *frac)
 {
     if(ft_strncmp(fractol, "julia", ft_strlen("mandelbrot")) == 0)
-    {
         run_graphic(fractol, frac);
-        return(ft_putstr_fd("Map selected, correctly\n", 1));
-    }
     else if(ft_strncmp(fractol, "mandelbrot", ft_strlen("mandelbrot")) == 0)
-    {
         run_graphic(fractol, frac);
-        return(ft_putstr_fd("Map selected, correctly\n", 1));
-    }
     else
-    {
-        ft_putstr_fd("Map invalid, please try again\n", 1);
-        return(EXIT_FAILURE);
-    }
-    return 1;
+        ft_errors(frac, MAP_INVALID);
 }
 
 void run_graphic(char *fractol, t_f *frac)
@@ -28,14 +18,19 @@ void run_graphic(char *fractol, t_f *frac)
         compiler_mandelbrot(fractol, frac);
 }
 
-void compiler_julia(char *fractol, t_f *frac)
+void compiler_mandelbrot(char *fractol, t_f *frac)
 {
-    frac->map = black_white;
+    frac->map = mandelbrot;
+    frac->x_spam = 3;
+	frac->y_spam = 3;
+	frac->x_offset = 2.3;
+	frac->y_offset = 1.5;
+    render(frac);
     ft_printf("oi %s\n", fractol);
 }
 
-void compiler_mandelbrot(char *fractol, t_f *frac)
+void compiler_julia(char *fractol, t_f *frac)
 {
-    frac->map = black_white;
-    printf("oi %s\n", fractol);
+    render(frac);
+    ft_printf("oi %s\n", fractol);
 }

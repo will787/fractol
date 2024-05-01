@@ -4,6 +4,7 @@
         "stdio.h": "c",
         "unistd.h": "c",
         "fractol.h": "c",
-        "libft.h": "c"
+        "libft.h": "c",
+        "get_next_line_bonus.h": "c"
     }
 }
