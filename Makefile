@@ -22,7 +22,7 @@ $(OBJ_DIR)/%.o: ./src/%.c
 	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS) && printf "Compiling: $(notdir $<)\n"
 
 $(NAME): $(OBJS) $(LIBFT_OBJS)
-	@$(CC) $(OBJS) $(LIBFT_OBJS) $(LIBS) -L$(LIBFT) -o -lft $(NAME)
+	@$(CC) $(OBJS) $(LIBFT_OBJS) -o $(NAME) $(LIBS) -L$(LIBFT) -lft
 
 clean:
 	@rm -rf $(OBJ_DIR)

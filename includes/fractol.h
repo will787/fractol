@@ -29,36 +29,32 @@ typedef enum
 #define WIDTH 512
 #define HEIGHT 512
 
-/*
+/**************************
     validate and compiler program
 */
-
 int validate(char *fractol, t_f *frac);
 void run_graphic(char *fractol, t_f *frac);
 void compiler_julia(char *fractol, t_f *frac);
 void compiler_mandelbrot(char *fractol, t_f *frac);
 //int main(int argc, char **argv);
 
-/* 
+/* *************************
     functions move, set color, set paths 
 */
-
 void key_move(void* param); 
 void window_fractol(t_f *fractol, char *map);
 
-/*
+/**************************
     render logic math utils
 */ 
-
 double points_scale(double unscaled_num, double new_min, double new_max, double old_min, double old_max);
 t_f sum_imaginary(t_f z1, t_f z2);
 t_f square_complex(t_f z);
 void render(t_f *fractol);
 
-/*
+/*************************
     colors functions
 */
-
 uint32_t	color_rgba(int r, int g, int b, int a);
 double circle_cromatic(double n, int cromatic);
 double black__white(double n);
