@@ -15,7 +15,7 @@ double black__white(double n)
 
 double circle_cromatic(double n, int cromatic)
 {
-    if(cromatic == black__white)
+    if(cromatic == black_white)
         return (black__white(n));
     return -1;
 }

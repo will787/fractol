@@ -15,13 +15,15 @@ typedef struct
     mlx_image_t *image;
     double iters;
     double colors;
+    int x;
+    int y;
     unsigned int (*map)(double, double, void*);
 } t_f;
 
 typedef enum
 {
     black_white,
-    circle_cromatic
+    circle_colors
 } OPTIONS_COLORS;
 
 #define WIDTH 512
@@ -51,12 +53,13 @@ void window_fractol(t_f *fractol, char *map);
 double points_scale(double unscaled_num, double new_min, double new_max, double old_min, double old_max);
 t_f sum_imaginary(t_f z1, t_f z2);
 t_f square_complex(t_f z);
+void render(t_f *fractol);
 
 /*
     colors functions
 */
 
+uint32_t	color_rgba(int r, int g, int b, int a);
 double circle_cromatic(double n, int cromatic);
-
-
+double black__white(double n);
 #endif

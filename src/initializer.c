@@ -41,11 +41,12 @@ void run_graphic(char *fractol, t_f *frac)
 
 void compiler_julia(char *fractol, t_f *frac)
 {
-    frac->map = fractol;
+    frac->map = black_white;
     ft_printf("oi %s\n", fractol);
 }
 
 void compiler_mandelbrot(char *fractol, t_f *frac)
 {
+    frac->map = black_white;
     printf("oi %s\n", fractol);
 }

@@ -14,15 +14,14 @@ void put_pixel(int x, int y, t_f *fractol)
     while (++i < fractol->iters)
     {
         z = sum_imaginary(square_complex(z), c);
-
         if((z.x * z.x ) + (z.y * z.y) > 4.0)
         {
-            mlx_put_pixel(fractol->image, x, y, fractol->colors);
-        } 
-    }
-    
+            fractol->colors = black__white(i);
+            double tmp_color = fractol->colors;
+            mlx_put_pixel(fractol->image, x, y, tmp_color);
+        }
+    }   
 }
-
 
 void render(t_f *fractol)
 {
@@ -34,7 +33,7 @@ void render(t_f *fractol)
         x = -1;
         while (++x < WIDTH)
         {
-            mlx_put_pixel(fractol->image, x, y, fractol);
+            put_pixel(x,y, fractol);
         }
     }
 }
