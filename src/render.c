@@ -6,7 +6,7 @@
 /*   By: wivieira <wivieira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 11:27:51 by wivieira          #+#    #+#             */
-/*   Updated: 2024/05/04 12:37:57 by wivieira         ###   ########.fr       */
+/*   Updated: 2024/05/04 17:07:22 by wivieira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void render(t_f *frac)
     double x;
     double y;
     double z;
-	
+
     i = -1;
     while (++i < frac->image->width)
     {
@@ -28,10 +28,10 @@ void render(t_f *frac)
         {
 			x = ft_x_value(frac, i);
 			y = ft_y_value(frac, j);
-			z = frac->map(x,y,frac) * frac->colors_pixel;
-			mlx_put_pixel(frac->image, i, j, circle_cromatic(z, frac->color_proto));
+			z = frac->map(x,y,frac) * frac->color_factor;
+			mlx_put_pixel(frac->image, i, j, circle_cromatic(z, frac->color_scheme));
         }
-    } 
+    }
 }
 
 double ft_x_value(const t_f *f, int x_coord)

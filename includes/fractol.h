@@ -1,8 +1,8 @@
 #ifndef FRACTOL_H
 # define FRACTOL_H
+
+
 # define ITERS 200
-
-
 # define WHITE 0xFFFFFFFF
 # define BLUE 0x0000FFFF
 # define RED 0xFF0000FF
@@ -13,6 +13,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <math.h>
 #include "../libs/MLX42/include/MLX42/MLX42.h"
 #include "../libs/libft/includes/ft_printf.h"
 #include "../libs/libft/includes/libft.h"
@@ -23,8 +24,8 @@ typedef struct
     mlx_t *mlx;
     mlx_image_t *image;
     double iters;
-    double colors_pixel;
-    int color_proto;
+    double color_factor;
+    int color_scheme;
     int x;
     int y;
     int32_t			x_mouse;
@@ -36,7 +37,7 @@ typedef struct
 	double			x_seed;
 	double			y_seed;
 	double			zoom;
-    unsigned int (*map)(double, double, void*);
+    unsigned int (*map)(double, double, void *);
 } t_f;
 
 typedef enum
@@ -69,11 +70,24 @@ void compiler_mandelbrot(char *fractol, t_f *frac);
     render logic math utils
 */ 
 unsigned int mandelbrot(double c_r, double c_i, void *vars);
+unsigned int	julia(double c_r, double c_i, void *vars);
+
+
+/* *************************
+    render windows and images functions 
+*/
+//void	scroll_hook(double xdelta, double ydelta, void *param);
+//static void ft_hook(void *param);
+void	key_hook(mlx_key_data_t keydata, void *param);
+void	scroll_hook(double xdelta, double ydelta, void *param);
+void	mouse_hook(mouse_key_t button, action_t action,
+		modifier_key_t mods, void *param);
+void	close_hook(void *param);
 
 /* *************************
     functions move, set color, set paths 
 */
-void    key_move(void* param); 
+void    key_move(void *param); 
 void    window_fractol(t_f *fractol, char *map);
 
 /**************************

@@ -6,7 +6,7 @@
 /*   By: wivieira <wivieira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 11:27:59 by wivieira          #+#    #+#             */
-/*   Updated: 2024/05/04 11:42:29 by wivieira         ###   ########.fr       */
+/*   Updated: 2024/05/04 16:40:12 by wivieira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,4 @@ void close_program(void *p, int type_er)
         mlx_terminate(param->mlx);
     }
     exit(type_er);
-}
+} 

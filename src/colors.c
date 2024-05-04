@@ -6,7 +6,7 @@
 /*   By: wivieira <wivieira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 11:28:39 by wivieira          #+#    #+#             */
-/*   Updated: 2024/05/04 11:29:10 by wivieira         ###   ########.fr       */
+/*   Updated: 2024/05/04 15:59:23 by wivieira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,21 @@ double	circle_cromatic(double n, int cromatic)
     if(cromatic == black_white)
         return (black__white(n));
     return -1;
+}
+
+double	crazy_dynamic_scheme(double nb)
+{
+	int		r;
+	int		g;
+	int		b;
+	double	time;
+
+	time = mlx_get_time();
+	if (time > 10000)
+		time = 10000;
+	nb = pow(nb + 10, 3) + pow(nb + 2, 2) + nb * mlx_get_time();
+	r = (sin(nb) + 1) / 2 * 255;
+	g = (int)nb % 255;
+	b = (int)(nb / 1.61803398875) % 255;
+	return (color_rgba(r, g, b, 255));
 }

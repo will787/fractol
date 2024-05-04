@@ -6,7 +6,7 @@
 /*   By: wivieira <wivieira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 11:28:05 by wivieira          #+#    #+#             */
-/*   Updated: 2024/05/04 11:34:08 by wivieira         ###   ########.fr       */
+/*   Updated: 2024/05/04 17:15:10 by wivieira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,17 @@ void	window_fractol(t_f *frac, char *map)
 {
 	frac->mlx = NULL;
 	frac->image = NULL;
-	frac->mlx = mlx_init(WIDTH, HEIGHT, map, true);
+	validate(map,frac);
+	frac->mlx = mlx_init(WIDTH, HEIGHT, "Fract-ol", false);
 	if (!frac->mlx)
-		return ;
-	frac->image = mlx_new_image(frac->mlx, frac->mlx->width, frac->mlx->height);
-	if (!frac->image)
-		ft_errors(frac, MLX_IMAGE_FAIL);
-	if (mlx_image_to_window(frac->mlx, frac->image, 0, 0) < 0)
 		ft_errors(frac, MLX_FAILURE);
+	frac->image = mlx_new_image(frac->mlx, frac->mlx->width, frac->mlx->height);
+	if (!frac->image || mlx_image_to_window(frac->mlx, frac->image, 0, 0) < 0)
+		ft_errors(frac, MLX_IMAGE_FAIL);
 	frac->iters = ITERS;
-	frac->zoom = 1;
-	frac->color_proto = color_factor(frac);
-	frac->colors_pixel = black_white;
-	mlx_close_hook(frac->mlx, key_move, frac);
-	mlx_loop(frac->mlx);
-	mlx_terminate(frac->mlx);
+	frac->zoom = 1.0;
+	frac->color_factor = color_factor(frac);
+	frac->color_scheme = black_white;
 }
 
 void	key_move(void *param)
