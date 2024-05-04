@@ -1,21 +1,33 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wivieira <wivieira@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/04 11:27:59 by wivieira          #+#    #+#             */
+/*   Updated: 2024/05/04 11:42:29 by wivieira         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/fractol.h"
 
-void ft_errors(void *p, int type_er)
+void	ft_errors(void *p, int type_er)
 {
-    if(type_er == MAP_INVALID)
-        ft_putstr_fd("Map invalid, please select correctly map\n", 1);
-    else if(type_er == TO_MANY_ARGS)
-        ft_putstr_fd("Arguments for necessary the compiler: ./fractol {map}\n", 1);
-    else if(type_er == MLX_FAILURE)
-        ft_putstr_fd("Creation failure mlx window\n", 1);
-    else if(type_er == MLX_IMAGE_FAIL)
-        ft_putstr_fd("Failure view image, try again\n", 1);
-    close_program(p, type_er);
+	if (type_er == MAP_INVALID)
+		ft_putstr_fd("Map invalid, please select correctly map\n", 1);
+	else if (type_er == TO_MANY_ARGS)
+		ft_putstr_fd ("Arguments for necessary the compiler: ./fractol {map}\n", 1);
+	else if (type_er == MLX_FAILURE)
+		ft_putstr_fd("Creation failure mlx window\n", 1);
+	else if (type_er == MLX_IMAGE_FAIL)
+		ft_putstr_fd("Failure view image, try again\n", 1);
+	close_program (p, type_er);
 }
 
 void close_program(void *p, int type_er)
 {
-    t_f *param;
+    t_f	*param;
 
     param = (t_f *)p;
 

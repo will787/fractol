@@ -1,21 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   initializer.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wivieira <wivieira@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/04 11:28:27 by wivieira          #+#    #+#             */
+/*   Updated: 2024/05/04 12:20:55 by wivieira         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/fractol.h"
 
 void validate(char *fractol, t_f *frac)
 {
     if(ft_strncmp(fractol, "julia", ft_strlen("mandelbrot")) == 0)
-        run_graphic(fractol, frac);
+        compiler_mandelbrot(fractol, frac);
     else if(ft_strncmp(fractol, "mandelbrot", ft_strlen("mandelbrot")) == 0)
-        run_graphic(fractol, frac);
+        compiler_julia(fractol, frac);
     else
         ft_errors(frac, MAP_INVALID);
-}
-
-void run_graphic(char *fractol, t_f *frac)
-{
-    if(ft_strncmp(fractol, "julia", ft_strlen("julia")))
-        compiler_julia(fractol, frac);
-    else if(ft_strncmp(fractol, "mandelbrot", ft_strlen("mandelbrot")))
-        compiler_mandelbrot(fractol, frac);
 }
 
 void compiler_mandelbrot(char *fractol, t_f *frac)

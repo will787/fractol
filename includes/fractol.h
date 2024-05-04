@@ -2,6 +2,14 @@
 # define FRACTOL_H
 # define ITERS 200
 
+
+# define WHITE 0xFFFFFFFF
+# define BLUE 0x0000FFFF
+# define RED 0xFF0000FF
+# define GREEN 0x00FF00FF
+# define PINK 0xFFFF00FF
+# define YELLOW 0xFF00FFFF
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -45,14 +53,14 @@ typedef enum
     MAP_INVALID
 } errors;
 
-#define WIDTH 512
-#define HEIGHT 512
+#define WIDTH 800
+#define HEIGHT 800
 
 /**************************
     validate and compiler program
 */
 void validate(char *fractol, t_f *frac);
-void run_graphic(char *fractol, t_f *frac);
+//void run_graphic(char *fractol, t_f *frac);
 void compiler_julia(char *fractol, t_f *frac);
 void compiler_mandelbrot(char *fractol, t_f *frac);
 //int main(int argc, char **argv);
