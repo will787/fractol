@@ -12,12 +12,12 @@
 
 #include "../includes/fractol.h"
 
-void validate(char *fractol, t_f *frac)
+void validate(char *argv, t_f *frac)
 {
-    if(ft_strncmp(fractol, "mandelbrot", ft_strlen("mandelbrot")) == 0)
-        compiler_mandelbrot(fractol, frac);
-    else if(ft_strncmp(fractol, "julia", ft_strlen("julia")) == 0)
-        compiler_julia(fractol, frac);
+    if(ft_strncmp("mandelbrot", argv, ft_strlen("mandelbrot")) == 0)
+        compiler_mandelbrot(argv, frac);
+    else if(ft_strncmp(argv, "julia", ft_strlen("julia")) == 0)
+        compiler_julia(argv, frac);
     else
         ft_errors(frac, MAP_INVALID);
 }
@@ -29,7 +29,7 @@ void compiler_mandelbrot(char *fractol, t_f *frac)
 	frac->y_spam = 3;
 	frac->x_offset = 2.3;
 	frac->y_offset = 1.5;
-    ft_printf("oi %s\n", fractol);
+    ft_printf("oi%s\n", fractol);
 }
 
 void compiler_julia(char *fractol, t_f *frac)

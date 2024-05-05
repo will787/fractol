@@ -43,6 +43,7 @@ typedef struct
 typedef enum
 {
     black_white,
+    black_red,
     circle_colors
 } OPTIONS_COLORS;
 
@@ -60,7 +61,7 @@ typedef enum
 /**************************
     validate and compiler program
 */
-void validate(char *fractol, t_f *frac);
+void validate(char *argv, t_f *frac);
 //void run_graphic(char *fractol, t_f *frac);
 void compiler_julia(char *fractol, t_f *frac);
 void compiler_mandelbrot(char *fractol, t_f *frac);
@@ -88,7 +89,9 @@ void	close_hook(void *param);
     functions move, set color, set paths 
 */
 void    key_move(void *param); 
-void    window_fractol(t_f *fractol, char *map);
+void zoom_in(t_f *frac);
+void zoom_out(t_f *frac);
+void    window_fractol(t_f *fractol, char *argv);
 
 /**************************
     render logic math utils
@@ -106,7 +109,7 @@ double   ft_y_value(const t_f *f, int y_coord);
 double	color_factor(t_f *frac);
 uint32_t	color_rgba(int r, int g, int b, int a);
 double circle_cromatic(double n, int cromatic);
-double black__white(double n);
+double	black__white_theme(double n);
 
 
 /*************************

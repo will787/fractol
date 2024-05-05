@@ -39,4 +39,29 @@ void close_program(void *p, int type_er)
         mlx_terminate(param->mlx);
     }
     exit(type_er);
-} 
+}
+
+void zoom_in(t_f *frac)
+{
+    double previous;
+
+    previous = frac->x_spam;
+    frac->x_spam *= 0.99;
+    frac->x_offset -= (previous - frac->x_spam)  / 2;
+    previous = frac->y_spam;
+    frac->y_spam *= 0.99;
+    frac->y_offset *= (previous - frac->y_spam) / 2;
+    frac->zoom /= 0.99;
+}
+
+void zoom_out(t_f *frac)
+{
+    double previous;
+
+    previous = frac->x_spam;
+    frac->x_spam *= 1.01;
+    frac->x_offset = (previous - frac->x_spam) / 2;
+    previous = frac->y_spam;
+    frac->y_spam -= (previous - frac->y_spam) / 2;
+    frac->zoom /= 1.01;
+}

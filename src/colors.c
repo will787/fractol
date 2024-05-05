@@ -22,34 +22,42 @@ double	color_factor(t_f *frac)
 	return (1 / (frac->iters));
 }
 
-double	black__white(double n)
+double	black__white_theme(double n)
 {
     n = 1 - n;
     n *= 255;
     return(color_rgba(n, n, n, 255));
 }
 
+double black__other_theme(double n)
+{
+    int r;
+	int g;
+	int b;
+	int a;
+    if (n == 0) {
+        r = 255; // Vermelho
+        g = 0;
+		b = 0; // Zerar as outras componentes para garantir vermelho puro
+    }
+    else if (n == 1) {
+        r = g = b = 0; // Preto
+        a = 255; // Opaco
+    }
+    else {
+        // Use alguma lógica para calcular R, G, B e A com base em N
+        // Aqui você pode implementar a lógica para as outras cores se necessário
+    }
+    return color_rgba(r, g, b, a);
+}
+
+
 
 double	circle_cromatic(double n, int cromatic)
 {
     if(cromatic == black_white)
-        return (black__white(n));
+        return (black__white_theme(n));
+	else if(cromatic == black_red)
+		return (black__other_theme(n));
     return -1;
-}
-
-double	crazy_dynamic_scheme(double nb)
-{
-	int		r;
-	int		g;
-	int		b;
-	double	time;
-
-	time = mlx_get_time();
-	if (time > 10000)
-		time = 10000;
-	nb = pow(nb + 10, 3) + pow(nb + 2, 2) + nb * mlx_get_time();
-	r = (sin(nb) + 1) / 2 * 255;
-	g = (int)nb % 255;
-	b = (int)(nb / 1.61803398875) % 255;
-	return (color_rgba(r, g, b, 255));
 }

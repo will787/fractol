@@ -19,16 +19,17 @@ void render(t_f *frac)
     double x;
     double y;
     double z;
-
     i = -1;
     while (++i < frac->image->width)
     {
+        // printf("%p\n", frac);
+        // printf("%i valor", i);
         j = -1;
-        while (j++ < frac->image->height)
+        while (++j < frac->image->height)
         {
-			x = ft_x_value(frac, i);
+			x = ft_x_value(frac, i);    
 			y = ft_y_value(frac, j);
-			z = frac->map(x,y,frac) * frac->color_factor;
+			z = frac->map(x, y, frac) * frac->color_factor;
 			mlx_put_pixel(frac->image, i, j, circle_cromatic(z, frac->color_scheme));
         }
     }

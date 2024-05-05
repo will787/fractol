@@ -12,21 +12,21 @@
 
 #include "../includes/fractol.h"
 
-void	window_fractol(t_f *frac, char *map)
+void	window_fractol(t_f *frac, char *argv)
 {
 	frac->mlx = NULL;
 	frac->image = NULL;
-	validate(map,frac);
-	frac->mlx = mlx_init(WIDTH, HEIGHT, "Fract-ol", false);
+	validate(argv,frac);
+	frac->mlx = mlx_init(WIDTH, HEIGHT, ft_strjoin("Fractol | ", argv), false);
 	if (!frac->mlx)
-		ft_errors(frac, MLX_FAILURE);
+		return (ft_errors(frac, MLX_FAILURE));
 	frac->image = mlx_new_image(frac->mlx, frac->mlx->width, frac->mlx->height);
 	if (!frac->image || mlx_image_to_window(frac->mlx, frac->image, 0, 0) < 0)
-		ft_errors(frac, MLX_IMAGE_FAIL);
+		return (ft_errors(frac, MLX_IMAGE_FAIL));
 	frac->iters = ITERS;
 	frac->zoom = 1.0;
 	frac->color_factor = color_factor(frac);
-	frac->color_scheme = black_white;
+	frac->color_scheme = black_red;
 }
 
 void	key_move(void *param)

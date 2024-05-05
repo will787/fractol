@@ -20,7 +20,7 @@ unsigned int	mandelbrot(double c_r, double c_i, void *vars)
 	double			tmp;
 	t_f				*fractol;
 
-	fractol = (t_f *)vars;
+	fractol = vars;
 	z_r = 0.0;
 	z_i = 0.0;
 	n = -1;
