@@ -37,11 +37,3 @@ void compiler_julia(char *fractol, t_f *frac)
 	frac->map = julia;
     ft_printf("oi %s\n", fractol);
 }
-
-unsigned int	julia(double c_r, double c_i, void *vars)
-{
-	printf("%p", vars);
-	printf("%f", c_r);
-	printf("%f", c_i);
-	return(1);
-}
