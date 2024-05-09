@@ -1,6 +1,11 @@
 #include "../includes/fractol.h"
 
-static void ft_hook(void *param)
+void	close_hook(void *param)
+{
+	close_program ((t_f *)param, EXIT_SUCCESS);
+}
+
+void ft_hook(void *param)
 {
 	t_f *frac;
 
@@ -15,10 +20,7 @@ static void ft_hook(void *param)
 		frac->image->instances[0].x -= 50;
 	if (mlx_is_key_down(frac->mlx, MLX_KEY_RIGHT))
 		frac->image->instances[0].x += 50;
+	//if (mlx_is_key_down(frac->mlx, MLX_KEY_Z))
+	//	many_colors(frac);
 	render(frac);
-}
-
-void	close_hook(void *param)
-{
-	close_program ((t_f *)param, EXIT_SUCCESS);
 }

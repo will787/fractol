@@ -65,3 +65,19 @@ void zoom_out(t_f *frac)
     frac->y_spam -= (previous - frac->y_spam) / 2;
     frac->zoom /= 1.01;
 }
+
+
+void many_colors(t_f *frac)
+{
+    frac->x_seed = 0.291892;
+	frac->y_seed = 0.016842;
+    while ((frac->x_seed / 100) < frac->iters)
+    {
+        while (frac->y_seed / 100 < frac-> iters / 20)
+        {
+            frac->y_seed += frac->y_seed / 50;
+            break;
+        }
+        frac->x_seed += frac->x_seed / 50;
+    }
+}

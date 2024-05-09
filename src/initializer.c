@@ -35,5 +35,11 @@ void compiler_mandelbrot(char *fractol, t_f *frac)
 void compiler_julia(char *fractol, t_f *frac)
 {
 	frac->map = julia;
+    frac->x_spam = 3.2;
+    frac->y_spam = 3.2;
+    frac->x_offset = 1.6;
+    frac->y_offset = 1.6;
+    frac->x_seed = 0.291892;
+	frac->y_seed = 0.016842;
     ft_printf("oi %s\n", fractol);
 }
