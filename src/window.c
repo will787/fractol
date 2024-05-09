@@ -26,22 +26,5 @@ void	window_fractol(t_f *frac, char *argv)
 	frac->iters = ITERS;
 	frac->zoom = 1.0;
 	frac->color_factor = color_factor(frac);
-	frac->color_scheme = black_red;
-}
-
-void	key_move(void *param)
-{
-	t_f	*fractol;
-
-	fractol = (t_f *)param;
-	if (mlx_is_key_down(fractol->mlx, MLX_KEY_ESCAPE))
-		mlx_close_window(fractol->mlx);
-	if (mlx_is_key_down(fractol->mlx, MLX_KEY_UP))
-		fractol->image->instances[0].y -= 50;
-	if (mlx_is_key_down(fractol->mlx, MLX_KEY_DOWN))
-		fractol->image->instances[0].y += 50;
-	if (mlx_is_key_down(fractol->mlx, MLX_KEY_LEFT))
-		fractol->image->instances[0].x -= 50;
-	if (mlx_is_key_down(fractol->mlx, MLX_KEY_RIGHT))
-		fractol->image->instances[0].x += 50;
+	frac->color_scheme = black_white;
 }

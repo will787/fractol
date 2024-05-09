@@ -78,9 +78,9 @@ unsigned int	julia(double c_r, double c_i, void *vars);
     render windows and images functions 
 */
 //void	scroll_hook(double xdelta, double ydelta, void *param);
-//static void ft_hook(void *param);
-void	key_hook(mlx_key_data_t keydata, void *param);
-void	scroll_hook(double xdelta, double ydelta, void *param);
+static void ft_hook(void *param);
+//void	key_hook(mlx_key_data_t keydata, void *param);
+//void	scroll_hook(double xdelta, double ydelta, void *param);
 void	mouse_hook(mouse_key_t button, action_t action,
 		modifier_key_t mods, void *param);
 void	close_hook(void *param);
