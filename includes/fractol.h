@@ -117,6 +117,6 @@ double	black__white_theme(double n);
 /*************************
     functions errors
 */
-void ft_errors(void *p, int type_er);
-void close_program(void *p, int type_er);
+void	ft_errors(t_f *frac, int type_er);
+void close_program(t_f *frac, int type_er);
 #endif
