@@ -15,9 +15,14 @@
 int main(int argc, char **argv)
 {
     t_f	frac;
-    if(argc != 2)
-        ft_errors(&frac, TO_MANY_ARGS);
-    window_fractol(&frac, argv[1]);
+    if(argc == 1)
+	{
+		ft_putstr_fd("Missing args, retry compiler\n", 1);
+		return(-1);
+	}
+    //if(argc != 2)
+    //  ft_errors(&frac, TO_MANY_ARGS);
+	window_fractol(&frac, argv[1]);
 	mlx_close_hook(frac.mlx, &close_hook, &frac);
     mlx_loop_hook(frac.mlx, ft_hook, &frac);
 	//mlx_key_hook(frac.mlx, &mouse_hook, &frac);
