@@ -61,18 +61,17 @@ typedef enum
 /**************************
     validate and compiler program
 */
-
-void many_colors(t_f *frac);
+int main(int argc, char **argv);
 void validate(char *argv, t_f *frac);
-//void run_graphic(char *fractol, t_f *frac);
 void compiler_julia(char *fractol, t_f *frac);
 void compiler_mandelbrot(char *fractol, t_f *frac);
-//int main(int argc, char **argv);
 
 /**************************
     render logic math utils
 */ 
 unsigned int mandelbrot(double c_r, double c_i, void *vars);
+double calculate_z_r(double z_r, double z_i, double c_r);
+double calculate_z_i(double z_r, double z_i, double c_i);
 unsigned int	julia(double c_r, double c_i, void *vars);
 
 
@@ -90,9 +89,6 @@ void	close_hook(void *param);
 /* *************************
     functions move, set color, set paths 
 */
-void    key_move(void *param); 
-void zoom_in(t_f *frac);
-void zoom_out(t_f *frac);
 void    window_fractol(t_f *fractol, char *argv);
 
 /**************************
@@ -112,6 +108,7 @@ double	color_factor(t_f *frac);
 uint32_t	color_rgba(int r, int g, int b, int a);
 double circle_cromatic(double n, int cromatic);
 double	black__white_theme(double n);
+void many_colors(t_f *frac);
 
 
 /*************************

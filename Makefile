@@ -4,35 +4,35 @@ LIBMLX := ./libs/MLX42
 LIBFT  := ./libs/libft
 HEADERS := -I ./include -I $(LIBMLX)/include -I $(LIBFT)/include
 LIBS := $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
-SRCS := $(shell find ./src -iname "*.c")
+SRCS := $(shell find ./src -name "*.c")
 OBJ_DIR := ./obj
-OBJS := $(patsubst ./src/%.c,$(OBJ_DIR)/%.o,$(SRCS))
-LIBFT_OBJS := $(wildcard $(LIBFT)/*.o)
+OBJS := $(addprefix $(OBJ_DIR)/,$(notdir $(SRCS:.c=.o)))
 
 all: libmlx libft $(NAME)
 
-libmlx:
-	@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
+libmlx: $(LIBMLX)
+	@cmake $(LIBMLX) -B $(LIBMLX)/build >/dev/null 2>&1 && make -C $(LIBMLX)/build -j4 >/dev/null 2>&1
 
-libft:
+libft: $(LIBFT)/libft.a
+
+$(LIBFT)/libft.a:
 	@make -C $(LIBFT)
+
 
 $(OBJ_DIR)/%.o: ./src/%.c
 	@mkdir -p $(OBJ_DIR)
-	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS) && printf "Compiling: $(notdir $<)\n"
+	@$(CC) $(CFLAGS) -o $@ -c $< $(HEADERS) && printf "Compiling: %s\n" $<
 
-$(NAME): $(OBJS) $(LIBFT_OBJS)
-	@$(CC) $(OBJS) $(LIBFT_OBJS) -o $(NAME) $(LIBS) -L$(LIBFT) -lft
+$(NAME): $(OBJS)
+	@$(CC) $^ -o $@ $(LIBS) -L$(LIBFT) -lft
 
 clean:
-	@rm -rf $(OBJ_DIR)
-	@make -C $(LIBFT) clean
-	@rm -rf $(LIBMLX)/build
-
+	@$(RM) -rf $(OBJ_DIR)
+	@$(RM) -rf $(LIBFT)/libft.a
+	@$(RM) -rf $(LIBFT)/obj
 fclean: clean
-	@rm -rf $(NAME)
-	@make -C $(LIBFT) fclean
+	@$(RM) -rf $(NAME)
 
 re: fclean all
 
-.PHONY: all, clean, fclean, re, libmlx, libft
+.PHONY: all clean fclean re libmlx libft

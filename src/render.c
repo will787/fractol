@@ -35,14 +35,14 @@ void render(t_f *frac)
     }
 }
 
-double ft_x_value(const t_f *f, int x_coord)
+double ft_x_value(const t_f *frac, int x_coord)
 {
-	return ((((double)x_coord / f->image->width) * f->x_spam)
-		- f->x_offset);
+	return ((((double)x_coord / frac->image->width) * frac->x_spam)
+		- frac->x_offset);
 }
 
-double ft_y_value(const t_f *f, int y_coord)
+double ft_y_value(const t_f *frac, int y_coord)
 {
-	return (-((((double)y_coord / f->image->height) * f->y_spam)
-			- f->y_offset));
+	return (-((((double)y_coord / frac->image->height) * frac->y_spam)
+			- frac->y_offset));
 }
